@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+		<title>Tab Title</title>
+	</head>
+
+	<body>
+		<br><br>
+		<div class="row">
+			<div class="col-lg-4 col-lg-offset-1">
+				<div class="panel panel-primary">
+					<div id="clericHeading" class="panel-heading">My Cleric</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<input id="clericLevel" class="form-control" type="text" placeholder="Cleric Level">
+						</div>
+						<!--<div class="form-group">
+							<input id="name" class="form-control" type="number" placeholder="Turn attempts">
+						</div>-->
+						<div class="form-group">
+							<input id="cha" class="form-control" type="number" placeholder="Charisma score">
+						</div>
+						<div class="form-group">
+							<input id="roll" class="form-control" type="number" placeholder="Check Roll">
+						</div>
+						<button id="submit" class="btn btn-success btn-block">Submit</button>
+					</div>
+				</div>
+			</div>
+
+			<!--<div class="col-lg-4 col-lg-offset-2">
+				<div class="panel panel-default">
+					<div class="panel-heading">My Form</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<input id="name" class="form-control" type="text" placeholder="Enter Name">
+						</div>
+						<div class="form-group">
+							<input id="name" class="form-control" type="text" placeholder="class">
+						</div>
+						<div class="form-group">
+							<input id="age" class="form-control" type="number" placeholder="Age">
+						</div>
+						<button id="submit" class="btn btn-success btn-block">Submit</button>
+					</div>
+				</div>
+			</div>-->
+
+		</div>
+
+		<div class="row">
+			<div id="result" class="col-lg-4 col-lg-offset-1 hide">
+				<p>
+					<strong>Max HD Affected: </strong>
+					<span id="maxHD"></span>
+				</p>
+				<p>
+					<strong>Total Turn Damage:</strong>
+					<span id="turnDamage"></span>
+				</p>
+				<p>
+					<strong>Damage Remaining:</strong>
+					<span id="turnDamageLeft"></span>
+				</p>
+				<div class="form-group">
+					<input id="creatureHD" class="form-control" type="number" placeholder="Creature HD">
+				</div>
+				<button id="decriment" class="btn btn-danger btn-block">subtract</button>
+			</div>
+		</div>
+
+
+		<div>
+			<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+			<script type="text/javascript">
+
+				$(document).ready(function() {
+
+
+
+					var chaMod = 0;
+					var clericLevel = 0;
+					var creatureHD = 0;
+					var turnDamage = 0;
+	
+					function getChaMod() {
+						var cha = + $('input[id="cha"]').val();  //takes the input string and "+" converts it to a number
+						console.log('charisma' + cha);
+						var chaMod = Math.floor((cha - 10)/2);
+						return chaMod;
+					}
+
+					function setCharInfo(cleric) {
+						$('input[id="clericLevel"]').val(cleric.level);
+						$('input[id="cha"]').val(cleric.charisma);
+						$('div[id="clericHeading"]').html("My Cleric: " + cleric.name + " The " + cleric.race);
+					}
+
+					$.ajax({
+						datatype: "JSON",
+						url: "cleric.json",
+						success: function(data) {
+							setCharInfo(data);
+						},
+						error: function(data) {
+							alert(JSON.stringify(data));
+						}
+					});
+
+					function getMaxHD() {
+						var roll = + $('input[id="roll"]').val();
+						console.log(roll);
+						var check = roll + chaMod;
+						console.log(check);
+						switch(true) {
+							case (check < 1):
+								return (clericLevel - 4);
+							case (check > 0 && check < 4):
+								return (clericLevel - 3);
+							case (check > 3 && check < 7):
+								return (clericLevel - 2);
+							case (check > 6 && check < 10):
+								return (clericLevel - 1);
+							case (check > 9 && check < 13):
+								return (clericLevel);
+							case (check > 12 && check < 16):
+								return (clericLevel + 1);
+							case (check > 15 && check < 19):
+								return (clericLevel + 2);
+							case (check > 18 && check < 22):
+								return (clericLevel + 3);	
+							case (check > 21):
+								return (clericLevel + 4);
+						}
+					}
+
+					function updateTurnDamage() {
+						var creatureHD = + $('input[id="creatureHD"]').val();
+						console.log('HD' + creatureHD);
+						console.log('TD' + turnDamage);
+						turnDamage = (turnDamage - creatureHD);
+						return turnDamage;
+					}
+
+					function getDmgRoll() {
+						var dmgRoll = Math.floor((Math.random()*11) + 2);
+						turnDamage = (chaMod + clericLevel + dmgRoll);
+						return turnDamage;
+					}
+
+					$('button[id="submit"]').click(function() {
+						chaMod = getChaMod();
+						clericLevel = + $('input[id="clericLevel"]').val();
+						$('span[id="maxHD"]').html(getMaxHD());
+						$('span[id="turnDamage"]').html(getDmgRoll());
+						$('span[id="turnDamageLeft"]').html(turnDamage);
+						$('div[id="result"]').removeClass('hide');
+					});
+
+					$('button[id="decriment"]').click(function() {	
+						$('span[id="turnDamageLeft"]').html(updateTurnDamage());
+					});
+
+				});
+
+			</script>
+		</div>
+	</body>
+
+</html>
