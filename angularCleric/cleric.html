@@ -1,10 +1,13 @@
 <div class="row">
 	<div class="col-lg-4 col-lg-offset-1">
 		<div class="panel panel-primary">
-			<div id="clericHeading" class="panel-heading">My Cleric: {{ cleric.name }}</div>
+			<div id="clericHeading" class="panel-heading">
+				My Cleric: {{ cleric.name }}<br>
+				Turn Attempt
+			</div>
 			<div class="panel-body">
 				<div class="form-group">
-					<input id="clericLevel" class="form-control" type="text" placeholder="Cleric Level" ng-model="cleric.level">
+					<input id="clericLevel" class="form-control" type="number" placeholder="Cleric Level" ng-model="cleric.level">
 				</div>
 				<div class="form-group">
 					<input id="cha" class="form-control" type="number" placeholder="Charisma score" ng-model="cleric.charisma">
@@ -12,9 +15,17 @@
 				<div class="form-group">
 					<input id="roll" class="form-control" type="number" placeholder="Check Roll" ng-model="roll">
 				</div>
-				<button id="submit" class="btn btn-success btn-block" ng-click="getDmgRoll(chaMod, cleric.level)">Submit</button>
+				<div class="checkbox">
+					<label>
+						<input ng-model="religion" type="checkbox">check if religion skill > 4
+					</label>
+				</div>
+				<button id="submit" class="btn btn-success btn-block" ng-click="calculate()">Submit</button>
 			</div>
 		</div>
+	</div>
+	<div class="col-lg-4 col-lg-offset-2">
+		<img ng-click="change()" ng-src="{{ img }}">
 	</div>
 </div>
 
@@ -22,7 +33,7 @@
 	<div class="col-lg-4 col-lg-offset-1">
 		<p>
 			<strong>Max HD Affected: </strong>
-			<span id="maxHD">{{ getMaxHD(roll, chaMod, cleric.level) }}</span>
+			<span id="maxHD">{{ maxHd }}</span>
 		</p>
 		<p>
 			<strong>Total Turn Damage:</strong>

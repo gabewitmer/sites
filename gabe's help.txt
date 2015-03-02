@@ -1,0 +1,3 @@
+scp file gabe@ghoulgotha.com:/filepath   //copy folder to server
+ssh gabe@ghoulgotha.com
+cp -r file /usr/share/nginx/html/gabe
