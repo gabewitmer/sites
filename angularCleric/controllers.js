@@ -2,13 +2,15 @@
 
 var characterControllers = angular.module('characterControllers', []);
 
-characterControllers.controller('ClericController', ['$scope', 'ClericService', function($scope, ClericService) {
+characterControllers.controller('TurnAttemptController', ['$scope', '$rootScope', 'ClericService', function($scope, $rootScope, ClericService) {
 
 	ClericService.get().$promise.then(function(data) {
 			$scope.cleric = data;
 			$scope.chaMod = Math.floor((data.charisma - 10)/2);
 		}
 	);
+
+	$rootScope.selected = 'turnAttempt'
 
 	function getMaxHd() {
 		var check = $scope.roll + $scope.chaMod;
@@ -57,30 +59,40 @@ characterControllers.controller('ClericController', ['$scope', 'ClericService', 
 		getMaxHd();
 		getDmgRoll();
 		$scope.result = true;
-		$scope.img = 'clericturning.jpg';
+		if ($scope.greaterTurn) {
+			$scope.counter = 2;
+			$scope.img = images[$scope.counter];
+			$scope.skellyImgLeft = skellyLeft[$scope.counter];	
+			$scope.skellyImgRight = skellyRight[$scope.counter];
+		} else {
+			$scope.counter = 1;
+			$scope.img = images[$scope.counter];
+			$scope.skellyImgLeft = skellyLeft[$scope.counter];	
+			$scope.skellyImgRight = skellyRight[$scope.counter];
+		}
 	};
 
 	$scope.updateDmgLeft = function(creatureHD) {
 		$scope.dmgLeft = $scope.dmgLeft - creatureHD;
 	};
 
-	$scope.change = function() {
-		//$scope.img = 'cleric.jpg';
-		switch ($scope.counter) {
-			case 0:
-				$scope.img = 'cleric.jpg';
-				$scope.counter++;
-				break;
-			case 1:
-				$scope.img = 'clericturning.jpg';
-				$scope.counter++;
-				break;
-			case 2:
-				$scope.img = 'cleric3.jpg';
-				$scope.counter = 0;
-				break;
+	$scope.getNextImage = function() {
+		if ($scope.counter < 2) {
+			$scope.counter++;
 		}
+		else {
+			$scope.counter = 0;
+		}
+		$scope.img = images[$scope.counter];
+		$scope.skellyImgLeft = skellyLeft[$scope.counter];	
+		$scope.skellyImgRight = skellyRight[$scope.counter];
 	}
+
+	var images = ['cleric.jpg', 'clericturning.jpg', 'cleric3.jpg'];
+
+	var skellyLeft = ['skellyLeft.jpg', 'skellyRight.jpg', 'dust.jpg'];
+
+	var skellyRight = ['skellyRight.jpg', 'skellyLeft.jpg', 'dust.jpg'];
 
 	$scope.dmgLeft = 0;
 
@@ -88,8 +100,84 @@ characterControllers.controller('ClericController', ['$scope', 'ClericService', 
 
 	$scope.dmgRoll = 0;
 
-	$scope.img = 'cleric.jpg';
+	$scope.counter = 0;
 
-	$scope.counter = 1;
+	$scope.img = images[$scope.counter];
 
+	$scope.skellyImgLeft = skellyLeft[$scope.counter];
+
+	$scope.skellyImgRight = skellyRight[$scope.counter];
+
+	$rootScope.selected = 'turnAttempt';
+}]);
+
+
+characterControllers.controller('StatsController', ['$scope', '$rootScope', 'ClericService', function($scope, $rootScope, ClericService) {
+
+	ClericService.get().$promise.then(function(data) {
+			$scope.cleric = data;
+	});
+
+	var images = ['cleric.jpg', 'clericturning.jpg', 'cleric3.jpg'];
+
+	$scope.getNextImage = function() {
+		if ($scope.counter < 2) {
+			$scope.counter++;
+		}
+		else {
+			$scope.counter = 0;
+		}
+		$scope.img = images[$scope.counter];	
+	}
+
+	$scope.counter = 0;
+
+	$scope.img = images[$scope.counter];
+
+	$rootScope.selected = 'stats';
+}]);
+
+
+characterControllers.controller('LauraController', ['$scope', '$rootScope', 'SpellService', function($scope, $rootScope, SpellService) {
+
+
+	$rootScope.selected = 'laura';
+
+	$scope.save = function() {
+		SpellService.save($scope.spell);
+	};
+}]);
+
+
+characterControllers.controller('SpellsController', ['$scope', '$rootScope', 'SpellService', function($scope, $rootScope, SpellService) {
+	
+	$rootScope.selected = 'spells';
+
+	$scope.spells = SpellService.get({spellId: 'order'});
+}]);
+
+
+characterControllers.controller('AdminController', ['$scope', '$rootScope', 'SpellService', function($scope, $rootScope, SpellService) {
+
+
+	$rootScope.selected = 'admin';
+
+	$scope.spells = SpellService.query();
+
+	$scope.delete = function(spellId) {
+		SpellService.delete({spellId: spellId}).$promise.then(function() {
+			$scope.spells = SpellService.query();
+		});
+	};
+
+	$scope.edit = function(spellId) {
+		$scope.spell = SpellService.get({spellId: spellId});
+	}
+
+	$scope.save = function() {
+		SpellService.save($scope.spell).$promise.then(function() {
+			$scope.spells = SpellService.query();
+			$scope.spell = {}
+		});
+	};
 }]);

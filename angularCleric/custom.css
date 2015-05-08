@@ -1,0 +1,36 @@
+html, body {
+	height: 100%;
+	background: url('d20.png') no-repeat center center fixed;
+    background-color: rgba(25,25,25,1);
+    color: rgb(115,15,215);
+}
+
+img.clericimg {
+	/*border: 10px solid #355535;*/
+	height: 300px;
+}
+
+input.cleric {
+	width: 250px;
+}
+
+.panel {
+	background-color: transparent;
+}
+
+.panel-primary > .panel-body {
+	background-color: rgba(77,77,100,.5);
+}
+
+img.skeleton {
+	width: 128px;
+	height: 300px;
+}
+
+div.cleric {
+	text-align: right;
+}
+
+p.backstory {
+	text-indent: 2.0em;
+}

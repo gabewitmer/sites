@@ -1,0 +1,45 @@
+
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="form-group">
+			<input ng-model="spell.name" placeholder="name" class="form-control">
+		</div>
+		<input class="form-group" ng-model="spell.school" placeholder="school">
+		<input class="form-group" ng-model="spell.spellType" placeholder="spellType">
+		<input class="form-group" ng-model="spell.components" placeholder="components">
+		<input class="form-group" ng-model="spell.level" placeholder="level">
+		<input class="form-group" ng-model="spell.castingTime" placeholder="castingTime">
+		<input class="form-group" ng-model="spell.spellRange" placeholder="spellRange">
+		<input class="form-group" ng-model="spell.spellTarget" placeholder="spellTarget">
+		<input class="form-group" ng-model="spell.spellDuration" placeholder="spellDuration">
+		<input class="form-group" ng-model="spell.description" placeholder="description">
+		<input class="form-group" ng-model="spell.savingThrow" placeholder="savingThrow">
+		<input class="form-group" ng-model="spell.spellResistance" placeholder="spellResistance">
+		<input class="form-group" ng-model="spell.aoe" placeholder="aoe">
+		<button ng-click="save()">Save</button>
+	</div>
+	<div class="col-lg-6">
+		<div class="panel panel-default">
+			<div class="panel-heading">spells</div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Spell Level</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="s in spells">
+						<td>{{ s.name }}</td>
+						<td>{{ s.level }}</td>
+						<td><a href="" ng-click="delete(s.id)">Delete</a></td>
+						<td><a href="" ng-click="edit(s.id)">Edit</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

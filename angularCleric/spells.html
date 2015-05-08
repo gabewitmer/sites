@@ -1,0 +1,102 @@
+<!-- <div class="row">
+	<div id="clericHeading" class="col-lg-4 col-lg-offset-4">
+		<h1 style="color: #5F9EA0">{{ cleric.name }}'s Spells</h1>
+	</div>
+</div> -->
+<div class="row">
+	<div class="col-lg-5">
+		<h1>Spells</h1>
+		<div class="panel-group" id="spellsAccordion" role="tablist" aria-multiselectable="true">
+			
+			<div class="panel panel-default" ng-repeat="(level, levelSpells) in spells">
+				<div class="panel-heading" role="tab" id="spell{{ level }}">
+					<h4 class="panel-title">
+						<a class="collapsed" data-toggle="collapse" data-parent="#spellsAccordion" href="" 
+							data-target="#spell{{ level }}Outer" aria-expanded="false">
+							Spell Level {{ level }}
+						</a>
+					</h4>
+				</div>
+				<div id="spell{{ level }}Outer" class="panel-collapse collapse" role="tabpanel">
+					<div class="panel-body">
+						<div class="panel-group" id="spell{{ level }}Accordion" role="tablist" aria-multiselectable="true">
+
+
+							<div class="panel panel-default" ng-repeat="spell in levelSpells">
+								<div class="panel-heading" role="tab">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" data-parent="#spell{{ level }}Accordion" href="" 
+											data-target="#spell{{ level }}-{{ spell.id }}" aria-expanded="true">
+											{{ spell.name }}
+										</a>
+									</h4>
+								</div>
+								<div id="spell{{ level }}-{{ spell.id }}" class="panel-collapse collapse" role="tabpanel">
+									<div class="panel-body">
+										<p><strong>Components:</strong> {{ spell.components }}</p>
+										<p><strong>School:</strong> {{ spell.school }}</p>
+										<p><strong>Duration:</strong> {{ spell.spellDuration }}</p>
+										<p><strong>casting time:</strong> {{ spell.castingTime }}</p>
+										<p><strong>Range:</strong> {{ spell.spellRange }}</p>
+										<p><strong>Target:</strong> {{ spell.spellTarget }}</p>
+										<p><strong>Area:</strong> {{ spell.aoe }}</p>
+										<p><strong>Saving:</strong> {{ spell.savingThrow }}</p>
+										<p><strong>SR:</strong> {{ spell.spellResistance }}</p>
+										<p><strong>Description:</strong></p>
+										<p>{{ spell.description }}</p>
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+<!-- 
+	<div class="col-lg-5 col-lg-offset-2">
+		<h1>Domain Spells</h1>
+		<h2>Travel Domain</h2>
+		<ol>
+			<li>			
+				Longstrider:<br>
+				Transmutation<br>
+				Components:	V, S, M<br>
+				Casting time:	1 standard action<br>
+				Range:	Personal<br>
+				Target:	You<br>
+				Duration:	1 hour/level (D)<br>
+				<div class="text-success">
+					This spell increases your base land speed by 10 feet. (This adjustment counts as an enhancement bonus.) It has no effect 
+					on other modes of movement, such as burrow, climb, fly, or swim.
+				</div>
+			</li>
+			<li>
+				Locate Object:<br>
+				Divination<br>
+				Components:	V, S, F/DF<br>
+				Casting time:	1 standard action<br>
+				Range:	Long (400 ft. + 40 ft./level)<br>
+				Area:	Circle, centered on you, with a radius of 400 ft. + 40 ft./level<br>
+				Duration:	1 min./level<br>
+				Saving Throw:	None<br>
+				Spell Resistance:	No<br>
+				<div class="text-success">
+					You sense the direction of a well-known or clearly visualized object. You can search for general items, in which 
+					case you locate the nearest one of its kind if more than one is within range. Attempting to 
+					find a certain item requires a specific and accurate mental image; if the image is not close enough to 
+					the actual object, the spell fails. You cannot specify a unique item unless you have observed that particular item 
+					firsthand (not through divination). The spell is blocked by even a thin sheet of lead. Creatures cannot 
+					be found by this spell. Polymorph any object fools it.
+				<div>
+			</li>
+		</ol>
+	</div>
+</div> -->

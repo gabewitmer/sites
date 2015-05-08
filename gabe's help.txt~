@@ -3,4 +3,3 @@ ssh gabe@ghoulgotha.com
 cp -r file /usr/share/nginx/html/gabe
 git commit -m "cleric update" //comment
 git push -u origin master
-chmod 666 image.jpeg //changes the permissions of a file(for site)
