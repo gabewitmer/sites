@@ -3,15 +3,16 @@
 		<h1 style="color: #5F9EA0">{{ cleric.name }}'s Spells</h1>
 	</div>
 </div> -->
-<div class="row">
+<div class="scrollTop">hey</div>
+<div class="row" id="spells">
 	<div class="col-lg-5">
 		<h1>Spells</h1>
 		<div class="panel-group" id="spellsAccordion" role="tablist" aria-multiselectable="true">
-			
+
 			<div class="panel panel-default" ng-repeat="(level, levelSpells) in spells">
 				<div class="panel-heading" role="tab" id="spell{{ level }}">
 					<h4 class="panel-title">
-						<a class="collapsed" data-toggle="collapse" data-parent="#spellsAccordion" href="" 
+						<a class="collapsed" data-toggle="collapse" data-parent="#spellsAccordion" href=""
 							data-target="#spell{{ level }}Outer" aria-expanded="false">
 							Spell Level {{ level }}
 						</a>
@@ -25,7 +26,7 @@
 							<div class="panel panel-default" ng-repeat="spell in levelSpells">
 								<div class="panel-heading" role="tab">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#spell{{ level }}Accordion" href="" 
+										<a data-toggle="collapse" data-parent="#spell{{ level }}Accordion" href=""
 											data-target="#spell{{ level }}-{{ spell.id }}" aria-expanded="true">
 											{{ spell.name }}
 										</a>
@@ -58,14 +59,14 @@
 			</div>
 		</div>
 	</div>
-
-
-<!-- 
+</div>
+<div class="scrollBot"></div>
+<!--
 	<div class="col-lg-5 col-lg-offset-2">
 		<h1>Domain Spells</h1>
 		<h2>Travel Domain</h2>
 		<ol>
-			<li>			
+			<li>
 				Longstrider:<br>
 				Transmutation<br>
 				Components:	V, S, M<br>
@@ -74,7 +75,7 @@
 				Target:	You<br>
 				Duration:	1 hour/level (D)<br>
 				<div class="text-success">
-					This spell increases your base land speed by 10 feet. (This adjustment counts as an enhancement bonus.) It has no effect 
+					This spell increases your base land speed by 10 feet. (This adjustment counts as an enhancement bonus.) It has no effect
 					on other modes of movement, such as burrow, climb, fly, or swim.
 				</div>
 			</li>
@@ -89,11 +90,11 @@
 				Saving Throw:	None<br>
 				Spell Resistance:	No<br>
 				<div class="text-success">
-					You sense the direction of a well-known or clearly visualized object. You can search for general items, in which 
-					case you locate the nearest one of its kind if more than one is within range. Attempting to 
-					find a certain item requires a specific and accurate mental image; if the image is not close enough to 
-					the actual object, the spell fails. You cannot specify a unique item unless you have observed that particular item 
-					firsthand (not through divination). The spell is blocked by even a thin sheet of lead. Creatures cannot 
+					You sense the direction of a well-known or clearly visualized object. You can search for general items, in which
+					case you locate the nearest one of its kind if more than one is within range. Attempting to
+					find a certain item requires a specific and accurate mental image; if the image is not close enough to
+					the actual object, the spell fails. You cannot specify a unique item unless you have observed that particular item
+					firsthand (not through divination). The spell is blocked by even a thin sheet of lead. Creatures cannot
 					be found by this spell. Polymorph any object fools it.
 				<div>
 			</li>

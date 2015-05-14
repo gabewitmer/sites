@@ -1,0 +1,12 @@
+html, body {
+	height: 100%;
+	background: url('../pics/back-right.png') no-repeat right fixed, url('../pics/back-left.png') no-repeat left fixed, url('../pics/Texture-Old-Parchment-extended.jpg') center;
+
+	/*-webkit-background-size:
+  	cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover, contain;
+  	background-color: #ccc;*/
+	/*background-position: 0px 45px;*/
+}

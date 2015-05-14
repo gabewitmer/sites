@@ -1,8 +1,8 @@
-#cssmenu,
+/*#cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
 #cssmenu ul li a {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   border: 0;
   list-style: none;
@@ -29,7 +29,7 @@
 }
 #cssmenu ul {
   background: #222222;
-  /* Old browsers */
+
 
   background: -moz-linear-gradient(bottom, #000000 0%, #222222 50%, #3c3c3c 51%, #393939 78%, #888888 100%);
   background: -webkit-linear-gradient(bottom, #000000 0%, #222222 50%, #3c3c3c 51%, #393939 78%, #888888 100%);
@@ -84,7 +84,7 @@
 #cssmenu ul li:hover,
 #cssmenu ul li.active {
   background: #1275ae;
-  /* Old browsers */
+
 
   background: -moz-linear-gradient(bottom, #0b4669 0%, #1275ae 50%, #1794dc 51%, #1691d8 78%, #98d2f4 100%);
   background: -webkit-linear-gradient(bottom, #0b4669 0%, #1275ae 50%, #1794dc 51%, #1691d8 78%, #98d2f4 100%);
@@ -99,4 +99,42 @@
   background: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, #1275ae 61%, #1275ae 100%);
   background: linear-gradient(to top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, #1275ae 61%, #1275ae 100%);
   background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+}*/
+/*old navbar not being used*/
+
+
+
+.clericmenu {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  text-align: center;
+  background: linear-gradient(to bottom,
+    rgba(76,76,76,1) 0%,
+    rgba(89,89,89,1) 12%,
+    rgba(102,102,102,1) 25%,
+    rgba(71,71,71,1) 39%,
+    rgba(44,44,44,1) 50%,
+    rgba(0,0,0,1) 51%,
+    rgba(17,17,17,1) 60%,
+    rgba(43,43,43,1) 76%,
+    rgba(28,28,28,1) 91%,
+    rgba(19,19,19,1) 100%);
+    height: 42px;
+}
+
+.clericmenu a {
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  width: 150px;
+  padding: 10px 20px 10px 20px;
+  vertical-align: middle;
+  border: 1px solid black;
+  color: #337ab7;
+}
+
+.clericmenu a:hover, a.active {
+  background-color: rgba(15,15,155,.3);
+  color: rgb(255,255,255);
 }

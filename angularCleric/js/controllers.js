@@ -62,12 +62,12 @@ characterControllers.controller('TurnAttemptController', ['$scope', '$rootScope'
 		if ($scope.greaterTurn) {
 			$scope.counter = 2;
 			$scope.img = images[$scope.counter];
-			$scope.skellyImgLeft = skellyLeft[$scope.counter];	
+			$scope.skellyImgLeft = skellyLeft[$scope.counter];
 			$scope.skellyImgRight = skellyRight[$scope.counter];
 		} else {
 			$scope.counter = 1;
 			$scope.img = images[$scope.counter];
-			$scope.skellyImgLeft = skellyLeft[$scope.counter];	
+			$scope.skellyImgLeft = skellyLeft[$scope.counter];
 			$scope.skellyImgRight = skellyRight[$scope.counter];
 		}
 	};
@@ -84,15 +84,15 @@ characterControllers.controller('TurnAttemptController', ['$scope', '$rootScope'
 			$scope.counter = 0;
 		}
 		$scope.img = images[$scope.counter];
-		$scope.skellyImgLeft = skellyLeft[$scope.counter];	
+		$scope.skellyImgLeft = skellyLeft[$scope.counter];
 		$scope.skellyImgRight = skellyRight[$scope.counter];
 	}
 
-	var images = ['cleric.jpg', 'clericturning.jpg', 'cleric3.jpg'];
+	var images = ['pics/cleric.png', 'pics/clericturning.png', 'pics/cleric3.png'];
 
-	var skellyLeft = ['skellyLeft.jpg', 'skellyRight.jpg', 'dust.jpg'];
+	var skellyLeft = ['pics/skellyLeft.png', 'pics/skellyRight.png', 'pics/dust.png'];
 
-	var skellyRight = ['skellyRight.jpg', 'skellyLeft.jpg', 'dust.jpg'];
+	var skellyRight = ['pics/skellyRight.png', 'pics/skellyLeft.png', 'pics/dust.png'];
 
 	$scope.dmgLeft = 0;
 
@@ -118,7 +118,7 @@ characterControllers.controller('StatsController', ['$scope', '$rootScope', 'Cle
 			$scope.cleric = data;
 	});
 
-	var images = ['cleric.jpg', 'clericturning.jpg', 'cleric3.jpg'];
+	var images = ['pics/cleric.png', 'pics/clericturning.png', 'pics/cleric3.png'];
 
 	$scope.getNextImage = function() {
 		if ($scope.counter < 2) {
@@ -127,7 +127,7 @@ characterControllers.controller('StatsController', ['$scope', '$rootScope', 'Cle
 		else {
 			$scope.counter = 0;
 		}
-		$scope.img = images[$scope.counter];	
+		$scope.img = images[$scope.counter];
 	}
 
 	$scope.counter = 0;
@@ -150,10 +150,10 @@ characterControllers.controller('LauraController', ['$scope', '$rootScope', 'Spe
 
 
 characterControllers.controller('SpellsController', ['$scope', '$rootScope', 'SpellService', function($scope, $rootScope, SpellService) {
-	
+
 	$rootScope.selected = 'spells';
 
-	$scope.spells = SpellService.get({spellId: 'order'});
+	//$scope.spells = SpellService.get({spellId: 'order'});
 }]);
 
 

@@ -1,0 +1,53 @@
+<div class="stats">
+	<div class="row">
+		<div class="col-lg-4 col-lg-offset-1">
+			<h1>
+				<div id="clericHeading">
+					Adventurer: {{ cleric.name }}
+				</div>
+			</h1>
+			<div>
+				<h3>
+					Race: {{ cleric.race }}
+				</h3>
+				<h3>
+					Level: {{ cleric.level }}
+				</h3>
+				<div>
+					<h3>
+						Attributes:
+					</h3>
+						<ul>
+							<li>Strength: {{ cleric.strength }}</li>
+							<li>Dexterity: {{ cleric.dexterity }}</li>
+							<li></li>
+							<li></li>
+						</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4 col-lg-offset-2">
+			<img class="clericimg {{ fade }}" ng-click="next()" ng-src="{{ img }}">
+			<div>
+				<div>
+					<u><h3>Backstory</u>:</h3>
+					<p>Deep underground,<br>
+						A young dwarf dreaming of a world he never knew,<br>
+						He looked above, to trees and mountain height,<br>
+						And saw a Moon so blue, oh-oh.<br>
+						They told him dwarves could never fly so high<br>
+						They laughed and said;<br>
+						"He'd fail if he tried"<br>
+						He left his home, and his life behind,<br>
+						His dream burning like a rocket inside.<br>
+						So strap yourself into the rocket now, rocket now (so strap yourself into the rocket), <br>
+						You got your friends right by your side, oh-oh-oh, (you got your friends by your side),<br>
+						Final checks, then you close your eyes, <br>
+						Your dream burning, like a rocket inside.</p>
+						<p class="backstory">Mogdin woke up after the blast to find an explosion of pain and the inability to raise his mangled body. Opening his eyes, Mogdin finds a cleric standing over him. He continued to watch as a man in brilliant flowing robes made gestures and prayers while the pain slowly subsided. Great relief was found as Mogdin was pried from the clutches of death. Still unable to stand, he found himself being picked up by gentle hands and carried to the nearest temple.</p>
+						<p class="backstory">After his rescue, Mogdin felt indebted to the church and dedicated himself to the clergy. With his mission to help and ease the sufferings of others, Mogdin now works at the temple helping and studying. While Mogdin remains committed to his mission, he continues to grow restless with his dream burning like a rocket inside.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>

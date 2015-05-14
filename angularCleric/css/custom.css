@@ -1,8 +1,17 @@
-html, body {
-	height: 100%;
-	background: url('d20.png') no-repeat center center fixed;
-    background-color: rgba(25,25,25,1);
-    color: rgb(115,15,215);
+@import url(http://fonts.googleapis.com/css?family=Yellowtail);
+@import url(http://fonts.googleapis.com/css?family=Leckerli+One);
+
+/*.bumpDown {
+	position: absolute;
+	top: 43;
+}*/
+
+#spells {
+	font-family: 'Yellowtail', cursive;
+}
+
+.stats {
+	font-family: 'Leckerli One', cursive;
 }
 
 img.clericimg {
